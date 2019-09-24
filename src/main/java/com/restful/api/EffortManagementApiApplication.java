@@ -28,8 +28,8 @@ public class EffortManagementApiApplication  extends WebSecurityConfigurerAdapte
 	.csrf().disable()
 				.httpBasic()
 				.and()
-				.authorizeRequests().antMatchers("/swagger-resources/**").permitAll()
-				
+				.authorizeRequests().antMatchers("/swagger-resources/**").permitAll().
+		antMatchers("/swagger-ui.html").permitAll()
 				.anyRequest().permitAll();
 	}
 
