@@ -45,7 +45,7 @@ public class Project implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date actualEndDate;
-    
+
     private int pmId;
 
     public int getId() {
