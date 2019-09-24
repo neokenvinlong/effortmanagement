@@ -24,13 +24,11 @@ public class EffortManagementApiApplication  extends WebSecurityConfigurerAdapte
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-
-	.csrf().disable()
-				.httpBasic()
+				.authorizeRequests()
+				.anyRequest()
+				.authenticated()
 				.and()
-				.authorizeRequests().antMatchers("/swagger-resources/**").permitAll().
-		antMatchers("/swagger-ui.html").permitAll()
-				.anyRequest().permitAll();
+				.httpBasic();
 	}
 
 
