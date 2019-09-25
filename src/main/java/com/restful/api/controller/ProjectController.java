@@ -1,6 +1,5 @@
 package com.restful.api.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.restful.api.model.Project;
 import com.restful.api.repository.ProjectRepository;
 import com.restful.api.exception.ResourceNotFoundException;
