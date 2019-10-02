@@ -8,18 +8,21 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "project")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdDate"}, allowGetters = true)
 public class Project implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
-    private int id;
+    private Integer id;
 
     @NotBlank
+    @Column(name = "name")
     private String name;
 
     @NotBlank
@@ -27,32 +30,41 @@ public class Project implements Serializable {
     private String desc;
 
     @NotBlank
+    @Column(name = "status")
     private String status;
 
+    // Cho biết ngày khởi tạo
+    @Column(name = "created_at")
     @Temporal(TemporalType.DATE)
     @CreatedDate
     private Date createdDate;
 
+    // Ngày dự kiến bắt đầu dự án
     @Column(name = "planned_start_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE) // TemporalType.DATE dùng để chỉ lưu Date xuống DB
     private Date plannedStartDate;
 
+    @Column(name = "planned_end_date")
     @Temporal(TemporalType.DATE)
     private Date plannedEndDate;
 
+    @Column(name = "actual_start_date")
     @Temporal(TemporalType.DATE)
     private Date actualStartDate;
 
+    @Column(name = "actual_end_date")
     @Temporal(TemporalType.DATE)
     private Date actualEndDate;
+//
+//    private List<Project_Employee> project_employeeList;
+//
+//    private List<Task> taskList;
 
-    private int pmId;
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -120,11 +132,19 @@ public class Project implements Serializable {
         this.actualEndDate = actualEndDate;
     }
 
-    public int getPmId() {
-        return pmId;
-    }
-
-    public void setPmId(int pmId) {
-        this.pmId = pmId;
-    }
+//    public List<Project_Employee> getProject_employeeList() {
+//        return project_employeeList;
+//    }
+//
+//    public void setProject_employeeList(List<Project_Employee> project_employeeList) {
+//        this.project_employeeList = project_employeeList;
+//    }
+//
+//    public List<Task> getTaskList() {
+//        return taskList;
+//    }
+//
+//    public void setTaskList(List<Task> taskList) {
+//        this.taskList = taskList;
+//    }
 }
