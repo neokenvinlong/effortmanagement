@@ -28,4 +28,10 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.security:spring-security-test'
+	compile group:'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: '2.1.8.RELEASE'
 }
