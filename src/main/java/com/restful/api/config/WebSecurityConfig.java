@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/configuration/security",
                 "/swagger-ui.html",
                 "/webjars/**").permitAll()
+                .antMatchers("/me").permitAll()
                 .antMatchers(HttpMethod.PUT, "/tasks/**").hasRole("PM")
                 .antMatchers(HttpMethod.DELETE, "/tasks/**").hasRole("PM")
                 .antMatchers(HttpMethod.POST, "/tasks/**").hasRole("PM")
