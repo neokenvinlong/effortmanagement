@@ -2,6 +2,7 @@ package com.restful.api.controller;
 
 import com.restful.api.config.JwtTokenUtil;
 import com.restful.api.dto.JwtRequest;
+import com.restful.api.model.JwtResponse;
 import com.restful.api.response.AccountResponse;
 import com.restful.api.service.AccountService;
 import com.restful.api.service.JwtUserDetailsService;
