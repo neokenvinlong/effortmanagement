@@ -82,4 +82,9 @@ public class TaskServiceImp implements TaskService {
     public void deleteTask(int task_id) {
         taskRepository.updateStatusTask("CANCEL", task_id);
     }
+
+    @Override
+    public void updateIsSendTask(int task_id) {
+        taskRepository.updateIsSendTask(task_id);
+    }
 }

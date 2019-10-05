@@ -39,8 +39,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
             " FROM project WHERE project_id = :keyword", nativeQuery = true)
     Optional<String> findProjectStatusById(@Param("keyword") int projectId);
 
-    @Query(value = "SELECT p.project_id, p.name, p.description, p.status, p.created_at, p.planned_start_date, " +
-            "p.planned_end_date, p.actual_start_date, p.actual_end_date" +
+    @Query(value = "SELECT p.project_id, p.name, p.status" +
             " FROM project as p, project_employee as pe, employee as e" +
             " WHERE e.employee_id = pe.employee_id AND pe.project_id = p.project_id" +
             " AND e.employee_id = :id AND p.status != 'CANCEL' AND pe.status = true", nativeQuery = true)

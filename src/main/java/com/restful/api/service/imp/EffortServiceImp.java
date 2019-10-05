@@ -4,8 +4,10 @@ import com.restful.api.dto.EffortDTO;
 import com.restful.api.exception.ResourceNotFoundException;
 import com.restful.api.model.Effort_Employee;
 import com.restful.api.model.Employee;
+import com.restful.api.model.Task;
 import com.restful.api.repository.EffortRepository;
 import com.restful.api.repository.EmployeeRepository;
+import com.restful.api.repository.TaskRepository;
 import com.restful.api.service.EffortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class EffortServiceImp implements EffortService {
     EffortRepository effortRepository;
     @Autowired
     EmployeeRepository employeeRepository;
+    @Autowired
+    TaskRepository taskRepository;
 
     @Override
     public void updateApproveById(int id) {
@@ -35,10 +39,13 @@ public class EffortServiceImp implements EffortService {
     public void createEffort(EffortDTO effortDTO) {
         Employee employee = employeeRepository.findById(effortDTO.getEmp_id())
                 .orElseThrow(()->new ResourceNotFoundException("Employee","id",effortDTO.getEmp_id()));
+        Task task = taskRepository.findById(effortDTO.getTask_id())
+                .orElseThrow(()->new ResourceNotFoundException("Task","id",effortDTO.getTask_id()));
         Effort_Employee effort_employee = new Effort_Employee();
         effort_employee.setEffort(effortDTO.getEffort());
         effort_employee.setIs_approved(false);
         effort_employee.setEmployee(employee);
+        effort_employee.setTask(task);
 
         effortRepository.save(effort_employee);
     }

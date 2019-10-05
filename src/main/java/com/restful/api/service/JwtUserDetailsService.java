@@ -1,6 +1,5 @@
 package com.restful.api.service;
 
-import com.restful.api.dto.AccountResponseDTO;
 import com.restful.api.model.Account;
 import com.restful.api.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,11 @@
 package com.restful.api.response;
 
-public class EmployeeResponse {
+public interface EmployeeResponse {
 
-    private Integer employee_id;
-    private String name;
-    private String phone;
-    private String email;
-    private String skill;
-    private String account_name;
+     Integer getEmployee_id();
+     String getName();
+     String getPhone();
+     String getEmail();
+     String getSkill();
+     String getAccount_name();
 }

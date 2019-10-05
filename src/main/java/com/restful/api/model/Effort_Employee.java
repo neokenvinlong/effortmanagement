@@ -31,9 +31,9 @@ public class Effort_Employee implements Serializable {
 
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE,
             CascadeType.REFRESH })
-    @JoinColumn(name = "sub_task_id")
+    @JoinColumn(name = "task_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Sub_Task sub_task;
+    private Task task;
 
     public Integer getId() {
         return id;
@@ -67,11 +67,11 @@ public class Effort_Employee implements Serializable {
         this.employee = employee;
     }
 
-    public Sub_Task getSub_task() {
-        return sub_task;
+    public Task getTask() {
+        return task;
     }
 
-    public void setSub_task(Sub_Task sub_task) {
-        this.sub_task = sub_task;
+    public void setTask(Task task) {
+        this.task = task;
     }
 }

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "employee")
@@ -33,18 +32,10 @@ public class Employee implements Serializable {
     @JoinColumn(name = "account_name")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Account accountName;
-//
-//    private List<Sub_Task> sub_taskList;
-//
-//    private List<Note_Task> note_taskList;
 
     @Column(name = "skill")
     @NotBlank
     private String skill;
-
-//    private List<Effort_Employee> effort_employeeList;
-//
-//    private List<Project_Employee>project_employeeList;
 
     public Integer getId() {
         return id;

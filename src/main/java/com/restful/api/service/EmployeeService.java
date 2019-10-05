@@ -9,7 +9,6 @@ public interface EmployeeService {
 
     Employee getInfoOfSingleEmployeeByAccountName(String username);
     Employee getInfoOfSingleEmployeeByName(String name);
-  //  List<Employee> getListNameOfEmployeeByNameAndByProjectId(String name, int project_id);
     List<Employee> getListNameEmployeeByProjectIdAndByRole(int project_id, String role);
     int countNumberMemberInAProject(int project_id);
     int countNumberMemberInAProjectByRole(int project_id, String role);

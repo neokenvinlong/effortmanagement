@@ -3,6 +3,8 @@ package com.restful.api.controller;
 import com.restful.api.model.Project;
 import com.restful.api.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,16 +19,18 @@ public class ProjectController {
 
     // Get All Project By Employee Id
     @GetMapping("/project/employee/{id}")
+    @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public List<Project> findAllProjectByEmployeeId(@PathVariable(value = "id") int employee_id) {
         return projectService.findAllProjectByEmployeeId(employee_id);
     }
 
     // Create a new project
-    @PostMapping("/project")
-    public @ResponseBody void createProject(@Valid @RequestBody Project project) {
-        
-        projectService.createProject(project);
-    }
+//    @PostMapping("/project")
+//    @PreAuthorize("hasAuthority('ROLE_PM')")
+//    public @ResponseBody void createProject(@Valid @RequestBody Project project) {
+//
+//        projectService.createProject(project);
+//    }
 //
 //    // Get a Single Project by id and by pm id
 //    @GetMapping("/project/{id}")
@@ -36,17 +40,17 @@ public class ProjectController {
 //    }
 
     // Update a Project
-    @PutMapping("/project/{id}")
-    public @ResponseBody void updateProject(@Valid @RequestBody Project projectDetails) {
-
-        projectService.updateProject(projectDetails);
-    }
+//    @PutMapping("/project/{id}")
+//    public @ResponseBody void updateProject(@Valid @RequestBody Project projectDetails) {
+//
+//        projectService.updateProject(projectDetails);
+//    }
 
     // Delete a Project
-    @DeleteMapping("/project/{id}")
-    public @ResponseBody void deleteProject(@PathVariable(value = "id") int projectId) {
-        projectService.deleteProjectById(projectId);
-    }
+//    @DeleteMapping("/project/{id}")
+//    public @ResponseBody void deleteProject(@PathVariable(value = "id") int projectId) {
+//        projectService.deleteProjectById(projectId);
+//    }
 
 //    // Get a Single Project By Name
 //    @GetMapping("/project/{name}")
@@ -63,12 +67,13 @@ public class ProjectController {
 //    }
 
     // Update Status Project
-    @PatchMapping("/project/{id}")
-    public @ResponseBody void updateProjectStatusById(@PathVariable(value = "id") int projectId){
-        projectService.updateProjectStatusById(projectId);
-    }
+//    @PatchMapping("/project/{id}")
+//    public @ResponseBody void updateProjectStatusById(@PathVariable(value = "id") int projectId){
+//        projectService.updateProjectStatusById(projectId);
+//    }
 
     @GetMapping("/project/totalProject/{id}")
+    @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int countNumberOfProjectByEmployeeId(@PathVariable(value = "id") int employee_id){
 
         return projectService.countNumberOfProjectByEmployeeId(employee_id);
@@ -102,6 +107,7 @@ public class ProjectController {
 
 
     @GetMapping("/project/total/{id}")
+    @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int getTotalNumberMemberInProjectByProjectId(@PathVariable(value = "id") int project_id){
 
         return projectService.getTotalNumberMemberInProjectByProjectId(project_id);

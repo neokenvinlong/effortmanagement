@@ -2,6 +2,7 @@ package com.restful.api.config;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,12 +52,9 @@ public class JwtTokenUtil implements Serializable {
     }
 
     //generate token for user
-    public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
+    public String generateToken(String username, Collection role) {
         Date date = new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000);
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        System.out.println(formatter.format(date));
-        return doGenerateToken(claims, userDetails.getUsername(),date);
+        return doGenerateToken(username, role,date);
     }
 
     //while creating the token -
@@ -64,8 +62,11 @@ public class JwtTokenUtil implements Serializable {
     //2. Sign the JWT using the HS512 algorithm and secret key.
     //3. According to JWS Compact Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
     //   compaction of the JWT to a URL-safe string
-    private String doGenerateToken(Map<String, Object> claims, String subject, Date date) {
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+    private String doGenerateToken(String username, Collection role, Date date) {
+        Claims claims = Jwts.claims().setSubject(username);
+        claims.put("role",role);
+
+        return Jwts.builder().setClaims(claims).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(date)
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }

@@ -43,6 +43,12 @@ public class Task implements Serializable {
     @NotBlank
     private Double calendarEffort;
 
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE,
+            CascadeType.REFRESH })
+    @JoinColumn(name = "employee_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Employee employee;
+
    // private List<Sub_Task> sub_taskList;
 
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
@@ -107,19 +113,19 @@ public class Task implements Serializable {
         this.calendarEffort = calendarEffort;
     }
 
-//    public List<Sub_Task> getSub_taskList() {
-//        return sub_taskList;
-//    }
-//
-//    public void setSub_taskList(List<Sub_Task> sub_taskList) {
-//        this.sub_taskList = sub_taskList;
-//    }
-
     public Project getProject() {
         return project;
     }
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

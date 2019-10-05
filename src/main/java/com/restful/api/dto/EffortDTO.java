@@ -5,6 +5,15 @@ public class EffortDTO {
     private Boolean is_approved;
     private Integer emp_id;
     private Double effort;
+    private Integer task_id;
+
+    public Integer getTask_id() {
+        return task_id;
+    }
+
+    public void setTask_id(Integer task_id) {
+        this.task_id = task_id;
+    }
 
     public Integer getId() {
         return id;
