@@ -40,10 +40,11 @@ public class JwtAuthenticationController {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         List<String> role = accountService.getRoleByUsernameAndPassword(authenticationRequest);
+        AccountResponse accountResponse = accountService.getAccountByUsernameAndPassword(authenticationRequest.getUsername());
 
         final String token = jwtTokenUtil.generateToken(authenticationRequest.getUsername(), role);
 
-        return ResponseEntity.ok(new JwtResponse(token));
+        return ResponseEntity.ok(new JwtResponse(token, accountResponse.getName(), accountResponse.getRole()));
     }
 
     private void authenticate(String username, String password) throws Exception {
