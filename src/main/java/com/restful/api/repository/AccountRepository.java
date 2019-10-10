@@ -15,9 +15,16 @@ public interface AccountRepository extends JpaRepository<Account, String> {
             " FROM account WHERE name = :name and password = :password", nativeQuery = true)
     List<String> getRoleByUsernameAndPassword(@Param("name") String username, @Param("password") String password);
 
-    Account findByName(String username);
-
-    @Query(value = "SELECT role" +
+    @Query(value = "SELECT token_device" +
             " FROM account WHERE name = :name", nativeQuery = true)
-    AccountResponse getAccountByUsernameAndPassword(@Param("name") String username);
+    String getTokenDeviceByAccountName(@Param("name") String username);
+
+    @Query(value = "Update Account Set token_device = '' Where name = :name", nativeQuery = true)
+    void deleteTokenDevice(@Param("name") String username);
+
+    AccountResponse findByName(String username);
+
+    @Query(value = "SELECT name, role, password, token_device" +
+            " FROM account WHERE name = :name", nativeQuery = true)
+     Account findAccountByName(@Param("name") String username);
 }

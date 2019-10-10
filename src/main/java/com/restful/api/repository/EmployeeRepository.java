@@ -55,7 +55,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     int countNumberMemberInAProjectByRole(@Param("id") int project_id, @Param("role") String role);
 
 //          ----------          Delete Member           ----------
-    @Query(value = "Update Project_Employee Set Status='False' Where employee_id = :id AND project_id = :project_id",nativeQuery = true)
-    void deleteEmployeeInProjectById(@Param("id") int employee_id, @Param("project_id") int project_id);
+//    @Query(value = "Update Project_Employee Set Status='False' Where employee_id = :id AND project_id = :project_id",nativeQuery = true)
+//    void deleteEmployeeInProjectById(@Param("id") int employee_id, @Param("project_id") int project_id);
 
 }

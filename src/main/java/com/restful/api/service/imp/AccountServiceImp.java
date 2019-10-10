@@ -1,6 +1,8 @@
 package com.restful.api.service.imp;
 
+import com.restful.api.dto.AccountDTO;
 import com.restful.api.dto.JwtRequest;
+import com.restful.api.model.Account;
 import com.restful.api.repository.AccountRepository;
 import com.restful.api.response.AccountResponse;
 import com.restful.api.service.AccountService;
@@ -22,9 +24,21 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public AccountResponse getAccountByUsernameAndPassword(String username) {
+    public void saveOrUpdateTokenDevice(AccountDTO accountDto) {
+        Account account = accountRepository.findAccountByName(accountDto.getAccount_name());
+        account.setToken_device(accountDto.getToken_device());
 
-        return accountRepository.getAccountByUsernameAndPassword(username);
+        accountRepository.save(account);
     }
+
+    @Override
+    public void deleteTokenDevice(String username){
+        accountRepository.deleteTokenDevice(username);
+    }
+//    @Override
+//    public AccountResponse getAccountByUsernameAndPassword(String username) {
+//
+//        return accountRepository.getAccountByUsernameAndPassword(username);
+//    }
 
 }

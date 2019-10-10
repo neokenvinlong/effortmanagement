@@ -1,6 +1,7 @@
 package com.restful.api.repository;
 
 import com.restful.api.model.Task;
+import com.restful.api.response.ReportResponse;
 import com.restful.api.response.TaskResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -33,4 +34,10 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
 
     @Query(value = "Select status from task Where task_id = :id",nativeQuery = true)
     String getStatusTaskById(@Param("id") int task_id);
+
+    @Query(value = "Select t.title, t.calendar_effort from" +
+            " task as t, project as p Where" +
+            " t.project_id = p.project_id AND t.status != 'CANCEL'"+
+            " AND p.status != 'CANCEL' AND p.project_id = :id",nativeQuery = true)
+    List<ReportResponse> getEffortOfTaskForReport(@Param("id") int project_id);
 }

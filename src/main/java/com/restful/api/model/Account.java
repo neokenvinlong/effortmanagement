@@ -25,6 +25,9 @@ public class Account implements Serializable {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "token_device")
+    private String token_device;
+
 //    private Employee employee;
 
     public String getName() {
@@ -51,7 +54,15 @@ public class Account implements Serializable {
         this.role = role;
     }
 
-//    public Employee getEmployee() {
+    public String getToken_device() {
+        return token_device;
+    }
+
+    public void setToken_device(String token_device) {
+        this.token_device = token_device;
+    }
+
+    //    public Employee getEmployee() {
 //        return employee;
 //    }
 //

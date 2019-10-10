@@ -11,6 +11,15 @@ public class TaskDTO implements Serializable {
     private Date endDate;
     private Double calendarEffort;
     private Integer project_id;
+    private Integer emp_id;
+
+    public Integer getEmp_id() {
+        return emp_id;
+    }
+
+    public void setEmp_id(Integer emp_id) {
+        this.emp_id = emp_id;
+    }
 
     public Integer getId() {
         return id;

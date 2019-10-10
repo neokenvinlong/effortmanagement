@@ -13,6 +13,6 @@ public interface EmployeeService {
     int countNumberMemberInAProject(int project_id);
     int countNumberMemberInAProjectByRole(int project_id, String role);
     void updateInfoEmployee(Employee employeeDetail);
-    void addMemberIntoProject(EmployeeDTO employeeDTO);
-    void deleteMemberInProjectById(int employee_id, int project_id);
+   // void addMemberIntoProject(EmployeeDTO employeeDTO);
+   // void deleteMemberInProjectById(int employee_id, int project_id);
 }

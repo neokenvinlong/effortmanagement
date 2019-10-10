@@ -79,31 +79,32 @@ public class EmployeeServiceImp implements EmployeeService {
         employeeRepository.save(employee);
     }
 
-    @Override
-    public void addMemberIntoProject(EmployeeDTO employeeDTO) {
-        Account account = accountRepository.findByName(employeeDTO.getAccount_name());
+//    @Override
+//    public void addMemberIntoProject(EmployeeDTO employeeDTO) {
+//        Account account = accountRepository.findAccountByName(employeeDTO.getAccount_name());
+//
+//        Employee employee = new Employee();
+//        employee.setSkill(employeeDTO.getSkill());
+//        employee.setEmail(employeeDTO.getEmail());
+//        employee.setPhone(employeeDTO.getPhone());
+//        employee.setAccountName(account);
+//        employee.setName(employeeDTO.getName());
+//        employeeRepository.save(employee);
+//
+//        Project_Employee project_employee = new Project_Employee();
+//        project_employee.setEmployee(employee);
+//        Integer project_id = employeeDTO.getProject_id();
+//        Project project = projectRepository.findById(project_id)
+//                .orElseThrow(()-> new ResourceNotFoundException("Project","id",project_id));
+//        project_employee.setProject(project);
+//        project_employee.setStatus(true);
+//        project_employee_repository.save(project_employee);
+//
+//    }
 
-        Employee employee = new Employee();
-        employee.setSkill(employeeDTO.getSkill());
-        employee.setEmail(employeeDTO.getEmail());
-        employee.setPhone(employeeDTO.getPhone());
-        employee.setAccountName(account);
-        employee.setName(employeeDTO.getName());
-        employeeRepository.save(employee);
-
-        Project_Employee project_employee = new Project_Employee();
-        project_employee.setEmployee(employee);
-        Integer project_id = employeeDTO.getProject_id();
-        Project project = projectRepository.findById(project_id)
-                .orElseThrow(()-> new ResourceNotFoundException("Project","id",project_id));
-        project_employee.setProject(project);
-        project_employee.setStatus(true);
-        project_employee_repository.save(project_employee);
-
-    }
-
-    @Override
-    public void deleteMemberInProjectById(int employee_id, int project_id) {
-        employeeRepository.deleteEmployeeInProjectById(employee_id,project_id);
-    }
+//
+//    @Override
+//    public void deleteMemberInProjectById(int employee_id, int project_id) {
+//        employeeRepository.deleteEmployeeInProjectById(employee_id,project_id);
+//    }
 }

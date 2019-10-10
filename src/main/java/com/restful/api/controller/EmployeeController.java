@@ -57,15 +57,15 @@ public class EmployeeController {
         employeeService.updateInfoEmployee(employeeDetail);
     }
 
-    @PostMapping("/employee")
-    @Secured("ROLE_PM")
-    public @ResponseBody void addMemberIntoProject(@RequestBody EmployeeDTO employeeDTO){
-        employeeService.addMemberIntoProject(employeeDTO);
-    }
-
-    @DeleteMapping("/employee")
-    @Secured("ROLE_PM")
-    public @ResponseBody void deleteMemberInProjectById(@RequestBody EmployeeDTO employeeDTO){
-        employeeService.deleteMemberInProjectById(employeeDTO.getId(), employeeDTO.getProject_id());
-    }
+//    @PostMapping("/employee")
+//    @Secured("ROLE_PM")
+//    public @ResponseBody void addMemberIntoProject(@RequestBody EmployeeDTO employeeDTO){
+//        employeeService.addMemberIntoProject(employeeDTO);
+//    }
+//
+//    @DeleteMapping("/employee")
+//    @Secured("ROLE_PM")
+//    public @ResponseBody void deleteMemberInProjectById(@RequestBody EmployeeDTO employeeDTO){
+//        employeeService.deleteMemberInProjectById(employeeDTO.getId(), employeeDTO.getProject_id());
+//    }
 }

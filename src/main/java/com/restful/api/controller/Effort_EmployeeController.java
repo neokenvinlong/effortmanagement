@@ -25,7 +25,7 @@ public class Effort_EmployeeController {
         effortService.updateEffortById(effortDTO);
     }
 
-    @PostMapping
+    @PostMapping("effort/{id}")
     @Secured("ROLE_EMPLOYEE")
     public @ResponseBody void createEffort(@RequestBody EffortDTO effortDTO){
         effortService.createEffort(effortDTO);

@@ -27,17 +27,17 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 //            " FROM project WHERE project_id = :keyword  AND pm_id = :id", nativeQuery = true)
 //    public List<Project> findProjectByIdAndByPmId(@Param("keyword") int project_id, @Param("id") int pm_id);
 
-    @Query(value = "Update project Set status = 'CANCEL'" +
-            " FROM project WHERE project_id = :keyword", nativeQuery = true)
-    void deleteProjectById(@Param("keyword") int projectId);
-
-    @Query(value = "Update project Set status = :status" +
-            " FROM project WHERE project_id = :keyword", nativeQuery = true)
-    void updateProjectStatusById(@Param("status") String status, @Param("keyword") int projectId);
-
-    @Query(value = "SELECT status"+
-            " FROM project WHERE project_id = :keyword", nativeQuery = true)
-    Optional<String> findProjectStatusById(@Param("keyword") int projectId);
+//    @Query(value = "Update project Set status = 'CANCEL'" +
+//            " FROM project WHERE project_id = :keyword", nativeQuery = true)
+//    void deleteProjectById(@Param("keyword") int projectId);
+//
+//    @Query(value = "Update project Set status = :status" +
+//            " FROM project WHERE project_id = :keyword", nativeQuery = true)
+//    void updateProjectStatusById(@Param("status") String status, @Param("keyword") int projectId);
+//
+//    @Query(value = "SELECT status"+
+//            " FROM project WHERE project_id = :keyword", nativeQuery = true)
+//    Optional<String> findProjectStatusById(@Param("keyword") int projectId);
 
     @Query(value = "SELECT p.project_id, p.name, p.status" +
             " FROM project as p, project_employee as pe, employee as e" +
@@ -79,6 +79,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     @Query(value = "Select count(pe.employee_id) " +
             "from Project as p, Employee as e, project_employee as pe" +
             " Where e.employee_id=pe.employee_id AND pe.project_id = p.project_id" +
-            " AND p.project_id = :id AND pe.status = true",nativeQuery = true)
+            " AND p.project_id = :id AND pe.status = true" +
+            " AND p.status != 'CANCEL'",nativeQuery = true)
     int getTotalNumberMemberInProjectByProjectId(@Param("id") int project_id);
 }

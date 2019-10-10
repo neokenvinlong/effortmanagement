@@ -2,6 +2,7 @@ package com.restful.api.service;
 
 import com.restful.api.model.Account;
 import com.restful.api.repository.AccountRepository;
+import com.restful.api.response.AccountResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,7 +20,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account user = accountRepository.findByName(username);
+        AccountResponse user = accountRepository.findByName(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
