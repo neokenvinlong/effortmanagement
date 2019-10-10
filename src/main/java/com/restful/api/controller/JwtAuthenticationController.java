@@ -4,6 +4,7 @@ import com.restful.api.config.JwtTokenUtil;
 import com.restful.api.dto.AccountDTO;
 import com.restful.api.dto.JwtRequest;
 import com.restful.api.model.JwtResponse;
+import com.restful.api.response.AccountResponse;
 import com.restful.api.service.AccountService;
 import com.restful.api.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,12 +50,13 @@ public class JwtAuthenticationController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
-//
-//    @RequestMapping(value = "/me/{account_name}", method = RequestMethod.GET)
-//    private @ResponseBody  AccountResponse getAccountByUsernameAndPassword(@PathVariable(value = "account_name") String account_name){
-//
-//        return accountService.getAccountByUsernameAndPassword(account_name);
-//    }
+
+    @RequestMapping(value = "/me/{account_name}", method = RequestMethod.GET)
+    private @ResponseBody
+    AccountResponse getAccountByUsernameAndPassword(@PathVariable(value = "account_name") String account_name){
+
+        return accountService.getAccountByUsernameAndPassword(account_name);
+    }
 
     @RequestMapping(value = "/token_device", method = RequestMethod.POST)
     public @ResponseBody void saveOrUpdateTokenDevice(@RequestBody AccountDTO accountDTO){

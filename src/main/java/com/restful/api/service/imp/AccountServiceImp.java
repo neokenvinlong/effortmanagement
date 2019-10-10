@@ -35,10 +35,11 @@ public class AccountServiceImp implements AccountService {
     public void deleteTokenDevice(String username){
         accountRepository.deleteTokenDevice(username);
     }
-//    @Override
-//    public AccountResponse getAccountByUsernameAndPassword(String username) {
-//
-//        return accountRepository.getAccountByUsernameAndPassword(username);
-//    }
+
+    @Override
+    public AccountResponse getAccountByUsernameAndPassword(String username) {
+
+        return accountRepository.getAccountByUsernameAndPassword(username);
+    }
 
 }

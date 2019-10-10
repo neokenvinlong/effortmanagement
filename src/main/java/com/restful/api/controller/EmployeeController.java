@@ -72,7 +72,7 @@ public class EmployeeController {
 
     @GetMapping("/employee/project/{project_id}")
     @Secured("ROLE_PM")
-    public @ResponseBody List<EmployeeInProjectResponse> getListNameEmployeeByProjectIdAndByRole(@PathVariable(value = "project_id") int project_id){
+    public @ResponseBody List<EmployeeInProjectResponse> getListNameEmployeeByProjectId(@PathVariable(value = "project_id") int project_id){
 
         return employeeService.getListNameEmployeeByProjectId(project_id);
     }

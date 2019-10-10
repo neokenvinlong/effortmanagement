@@ -11,6 +11,6 @@ public interface AccountService {
    List<String> getRoleByUsernameAndPassword(JwtRequest jwtRequest);
    void saveOrUpdateTokenDevice(AccountDTO account);
    void deleteTokenDevice(String name);
-  // AccountResponse getAccountByUsernameAndPassword(String username);
+    AccountResponse getAccountByUsernameAndPassword(String username);
     //Account findByName(String username);
 }
