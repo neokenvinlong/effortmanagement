@@ -2,6 +2,7 @@ package com.restful.api.repository;
 
 import com.restful.api.dto.EmployeeDTO;
 import com.restful.api.model.Employee;
+import com.restful.api.response.EmployeeInProjectResponse;
 import com.restful.api.response.EmployeeResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -40,7 +41,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> getListNameEmployeeByProjectIdAndByRole(@Param("id") int project_id,
                                                                    @Param("role") String role);
 
-
+    @Query(value = "Select e.name, e.employee_id" +
+            " From employee as e, project_employee as pe, project as p, account as a" +
+            " Where e.employee_id = pe.employee_id AND pe.project_id = p.project_id" +
+            " AND p.project_id = :id", nativeQuery = true)
+    List<EmployeeInProjectResponse> getListNameEmployeeByProjectId(@Param("id") int project_id);
 
 //          ----------          Count Number Member In Project          ----------
 

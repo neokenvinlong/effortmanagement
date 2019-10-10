@@ -2,6 +2,7 @@ package com.restful.api.controller;
 
 import com.restful.api.dto.EmployeeDTO;
 import com.restful.api.model.Employee;
+import com.restful.api.response.EmployeeInProjectResponse;
 import com.restful.api.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -68,4 +69,11 @@ public class EmployeeController {
 //    public @ResponseBody void deleteMemberInProjectById(@RequestBody EmployeeDTO employeeDTO){
 //        employeeService.deleteMemberInProjectById(employeeDTO.getId(), employeeDTO.getProject_id());
 //    }
+
+    @GetMapping("/employee/project/{project_id}")
+    @Secured("ROLE_PM")
+    public @ResponseBody List<EmployeeInProjectResponse> getListNameEmployeeByProjectIdAndByRole(@PathVariable(value = "project_id") int project_id){
+
+        return employeeService.getListNameEmployeeByProjectId(project_id);
+    }
 }

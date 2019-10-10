@@ -10,6 +10,7 @@ import com.restful.api.repository.AccountRepository;
 import com.restful.api.repository.EmployeeRepository;
 import com.restful.api.repository.ProjectRepository;
 import com.restful.api.repository.Project_Employee_Repository;
+import com.restful.api.response.EmployeeInProjectResponse;
 import com.restful.api.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,12 @@ public class EmployeeServiceImp implements EmployeeService {
     public List<Employee> getListNameEmployeeByProjectIdAndByRole(int project_id, String role) {
 
         return employeeRepository.getListNameEmployeeByProjectIdAndByRole(project_id,role);
+    }
+
+    @Override
+    public List<EmployeeInProjectResponse> getListNameEmployeeByProjectId(int project_id) {
+
+        return employeeRepository.getListNameEmployeeByProjectId(project_id);
     }
 
     @Override
