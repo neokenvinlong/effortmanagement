@@ -42,4 +42,10 @@ public class AccountServiceImp implements AccountService {
         return accountRepository.getAccountByUsernameAndPassword(username);
     }
 
+    @Override
+    public String getTokenDeviceByAccountName(String account_name) {
+
+        return accountRepository.getTokenDeviceByAccountName(account_name);
+    }
+
 }

@@ -12,5 +12,6 @@ public interface AccountService {
    void saveOrUpdateTokenDevice(AccountDTO account);
    void deleteTokenDevice(String name);
     AccountResponse getAccountByUsernameAndPassword(String username);
+    String getTokenDeviceByAccountName(String account_name);
     //Account findByName(String username);
 }

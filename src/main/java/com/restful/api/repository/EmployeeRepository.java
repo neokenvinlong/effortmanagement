@@ -36,6 +36,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value = "Select e.name, e.employee_id, e.account_name, e.phone, e.email, e.skill" +
             " From employee as e, project_employee as pe, project as p, account as a" +
             " Where e.employee_id = pe.employee_id AND pe.project_id = p.project_id" +
+            " AND a.name = e.account_name" +
             " AND p.project_id = :id" +
             " AND a.role = :role", nativeQuery = true)
     List<Employee> getListNameEmployeeByProjectIdAndByRole(@Param("id") int project_id,
@@ -44,7 +45,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value = "Select e.name, e.employee_id" +
             " From employee as e, project_employee as pe, project as p, account as a" +
             " Where e.employee_id = pe.employee_id AND pe.project_id = p.project_id" +
-            " AND p.project_id = :id", nativeQuery = true)
+            " AND a.name = e.account_name" +
+            " AND p.project_id = :id AND a.role='ROLE_EMPLOYEE' ", nativeQuery = true)
     List<EmployeeInProjectResponse> getListNameEmployeeByProjectId(@Param("id") int project_id);
 
 //          ----------          Count Number Member In Project          ----------
