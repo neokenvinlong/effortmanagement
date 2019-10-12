@@ -16,15 +16,12 @@ public class Employee implements Serializable {
     private Integer id;
 
     @Column(name = "name")
-    @NotBlank
     private String name;
 
     @Column(name = "phone")
-    @NotBlank
     private String phone;
 
     @Column(name = "email")
-    @NotBlank
     private String email;
 
     @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
@@ -34,7 +31,6 @@ public class Employee implements Serializable {
     private Account accountName;
 
     @Column(name = "skill")
-    @NotBlank
     private String skill;
 
     public Integer getId() {

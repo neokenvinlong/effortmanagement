@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity // Allows us to have method level access control
 @EnableGlobalMethodSecurity(prePostEnabled = true) // Allows us to have method level access control
@@ -24,6 +26,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService jwtUserDetailsService;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
@@ -41,6 +46,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
         .userDetailsService(jwtUserDetailsService)
         .passwordEncoder(passwordEncoder());
+
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .authoritiesByUsernameQuery("Select name, role from account where name = ?");
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery("select name, Password from account where name = ?")
+//                .authoritiesByUsernameQuery("select name, Role  from account where name = ?")
+//        .passwordEncoder(passwordEncoder())
+//        .getUserDetailsService(jwtUserDetailsService);
     }
 
     @Bean
@@ -61,21 +74,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/configuration/security",
                 "/swagger-ui.html",
                 "/webjars/**").permitAll()
-                .antMatchers("/me").permitAll()
-                .antMatchers(HttpMethod.PUT, "/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.DELETE, "/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.POST, "/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.GET,"/tasks/**").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.GET, "/employees/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/employees/**").hasRole("PM")
-                .antMatchers(HttpMethod.PUT, "/employees/**").permitAll()
-                .antMatchers(HttpMethod.DELETE,"/employees/**").hasRole("PM")
-                .antMatchers(HttpMethod.PATCH,"/efforts/**").hasRole("PM")
-                .antMatchers(HttpMethod.PUT,"/efforts/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET,"/efforts/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/efforts/**").hasRole("EMPLOYEE")
-                .antMatchers( "/projects/**").permitAll()
+//                .antMatchers("/me").permitAll()
+//                .antMatchers(HttpMethod.PUT, "/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.DELETE, "/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.POST, "/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.GET,"/tasks/**").permitAll()
+//                .antMatchers(HttpMethod.PATCH,"/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.GET, "/employees/**").permitAll()
+//                .antMatchers(HttpMethod.POST, "/employees/**").hasRole("PM")
+//                .antMatchers(HttpMethod.PUT, "/employees/**").permitAll()
+//                .antMatchers(HttpMethod.DELETE,"/employees/**").hasRole("PM")
+//                .antMatchers(HttpMethod.PATCH,"/efforts/**").hasRole("PM")
+//                .antMatchers(HttpMethod.PUT,"/efforts/**").hasRole("EMPLOYEE")
+//                .antMatchers(HttpMethod.GET,"/efforts/**").permitAll()
+//                .antMatchers(HttpMethod.POST,"/efforts/**").hasRole("EMPLOYEE")
+//                .antMatchers( "/projects/**").permitAll()
                 // all other requests need to be authenticated
                         .anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to

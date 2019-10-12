@@ -67,6 +67,8 @@ public class TaskServiceImp implements TaskService {
         task.setEndDate(taskDTO.getEndDate());
         task.setStatus("NOT-START");
         task.setEmployee(employee);
+        task.setProject(project);
+        task.setTitle(taskDTO.getTitle());
 
         taskRepository.save(task);
     }
@@ -96,5 +98,11 @@ public class TaskServiceImp implements TaskService {
     @Override
     public void updateIsSendTask(int task_id) {
         taskRepository.updateIsSendTask(task_id);
+    }
+
+    @Override
+    public List<TaskResponse> getTaskOfProjectOfEmployee(int project_id, int emp_id) {
+
+        return taskRepository.getTaskOfProjectOfEmployee(project_id,emp_id);
     }
 }

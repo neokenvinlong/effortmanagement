@@ -26,7 +26,7 @@ public class TaskController {
     }
 
     @GetMapping("/task/list/{id}")
-    @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
+    @Secured("ROLE_PM")
     public @ResponseBody List<TaskResponse> getTaskOfProject(@PathVariable(value = "id") int project_id){
 
         return taskService.getTaskOfProject(project_id);
@@ -62,4 +62,10 @@ public class TaskController {
         taskService.updateIsSendTask(task_id);
     }
 
+    @GetMapping("/task/employee")
+    @PreAuthorize("hasRole('ROLE_PM')")
+    public @ResponseBody List<TaskResponse>getTaskOfProjectOfEmployee(@RequestBody TaskDTO taskDTO){
+
+        return taskService.getTaskOfProjectOfEmployee(taskDTO.getProject_id(),taskDTO.getEmp_id());
+    }
 }

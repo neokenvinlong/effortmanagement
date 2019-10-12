@@ -12,30 +12,25 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
     @Id
-    @NotBlank
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username")
+    private String username;
 
-    @NotBlank
     @JsonIgnore
     @Column(name = "password")
     private String password;
 
-    @NotBlank
     @Column(name = "role")
     private String role;
 
     @Column(name = "token_device")
     private String token_device;
 
-//    private Employee employee;
-
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

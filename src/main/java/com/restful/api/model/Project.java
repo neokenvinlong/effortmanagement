@@ -21,11 +21,9 @@ public class Project implements Serializable {
     @Column(name = "project_id")
     private Integer id;
 
-    @NotBlank
     @Column(name = "name")
     private String name;
 
-    @NotBlank
     @Column(name = "status")
     private String status;
 

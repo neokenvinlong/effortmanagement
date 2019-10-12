@@ -19,15 +19,12 @@ public class Task implements Serializable {
     private Integer id;
 
     @Column(name = "title")
-    @NotBlank
     private String title;
 
     @Column(name = "description")
-    @NotBlank
     private String description;
 
     @Column(name = "status")
-    @NotBlank
     private String status;
 
     @Column(name = "created_date")
@@ -40,7 +37,6 @@ public class Task implements Serializable {
     private Date endDate;
 
     @Column(name = "calendar_effort")
-    @NotBlank
     private Double calendarEffort;
 
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE,

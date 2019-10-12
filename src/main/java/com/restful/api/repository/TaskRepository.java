@@ -24,7 +24,12 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             "AND t.status != 'CANCEL'",nativeQuery = true)
     List<TaskResponse> getTaskOfProject(@Param("id") int project_id);
 
-
+    @Query(value = "Select t.task_id, t.title, t.description, t.status, t.created_date, t.end_date," +
+            " t.calendar_effort from task as t, project as p, employee as e" +
+            " Where p.project_id = t.project_id AND p.project_id = :id" +
+            " AND e.employee_id = t.employee_id AND t.is_send=true" +
+            " AND t.status != 'CANCEL' AND t.employee_id = :emp_id",nativeQuery = true)
+    List<TaskResponse> getTaskOfProjectOfEmployee(@Param("id") int project_id, @Param("emp_id") int employee_id);
 
     @Query(value = "Update Task Set status = :status Where task_id = :id",nativeQuery = true)
     void updateStatusTask(@Param("status") String status, @Param("id")int task_id);
