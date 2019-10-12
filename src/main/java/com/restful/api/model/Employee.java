@@ -12,7 +12,6 @@ public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
     private Integer id;
 
     @Column(name = "name")
@@ -87,7 +86,7 @@ public class Employee implements Serializable {
 //
 //    public void setProject_employeeList(List<Project_Employee> project_employeeList) {
 //        this.project_employeeList = project_employeeList;
-  //  }
+    //  }
 //
 //    public List<Sub_Task> getSub_taskList() {
 //        return sub_taskList;
@@ -111,5 +110,5 @@ public class Employee implements Serializable {
 //
 //    public void setEffort_employeeList(List<Effort_Employee> effort_employeeList) {
 //        this.effort_employeeList = effort_employeeList;
-   // }
+    // }
 }

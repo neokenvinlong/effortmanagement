@@ -31,21 +31,21 @@ public class EmployeeController {
         return employeeService.getInfoOfSingleEmployeeByName(name);
     }
 
-    @GetMapping("/employee/listEmployee")
+    @GetMapping("/employee/project/role/listEmployee")
     @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody List<Employee> getListNameEmployeeByProjectIdAndByRole(@RequestBody EmployeeDTO employeeDTO){
 
         return employeeService.getListNameEmployeeByProjectIdAndByRole(employeeDTO.getProject_id(), employeeDTO.getRole());
     }
 
-    @GetMapping("/employee/countMember/{id}")
+    @GetMapping("/employee/countMember/project/{id}")
     @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int countNumberMemberInAProject(@PathVariable(value = "id") int project_id){
 
         return employeeService.countNumberMemberInAProject(project_id);
     }
 
-    @GetMapping("/employee/numberMember")
+    @GetMapping("/employee/numberMember/project/role")
     @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int countNumberMemberInAProjectByRole(@RequestBody EmployeeDTO employeeDTO){
 
@@ -70,7 +70,7 @@ public class EmployeeController {
 //        employeeService.deleteMemberInProjectById(employeeDTO.getId(), employeeDTO.getProject_id());
 //    }
 
-    @GetMapping("/employee/project/{project_id}")
+    @GetMapping("/employee/list/project/{project_id}")
     @Secured("ROLE_PM")
     public @ResponseBody List<EmployeeInProjectResponse> getListNameEmployeeByProjectId(@PathVariable(value = "project_id") int project_id){
 

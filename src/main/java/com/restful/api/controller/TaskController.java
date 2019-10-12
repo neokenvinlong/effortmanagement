@@ -19,45 +19,43 @@ public class TaskController {
     TaskService taskService;
 
     @GetMapping("/task/number/{id}")
-    @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int getNumberTaskOfProject(@PathVariable(value = "id") int project_id){
 
         return taskService.getNumberTaskOfProject(project_id);
     }
 
     @GetMapping("/task/list/{id}")
-    @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody List<TaskResponse> getTaskOfProject(@PathVariable(value = "id") int project_id){
 
         return taskService.getTaskOfProject(project_id);
     }
 
     @PutMapping("/task/status/{id}")
-    @Secured("ROLE_PM")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void updateStatusTask(@PathVariable(value = "id") int task_id){
         taskService.updateStatusTask(task_id);
     }
 
     @PostMapping("/task")
-    @PreAuthorize("hasAnyAuthority('ROLE_PM')")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void createTask(@RequestBody TaskDTO taskDTO){
         taskService.createTask(taskDTO);
     }
 
     @PutMapping("/task")
-    @Secured("ROLE_PM")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void updateTask(@RequestBody TaskDTO taskDTO){
         taskService.updateTask(taskDTO);
     }
 
     @DeleteMapping("/task/{id}")
-    @Secured("ROLE_PM")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void deleteTask(@PathVariable(value = "id") int task_id){
         taskService.deleteTask(task_id);
     }
 
     @PatchMapping("/task/{id}")
-    @Secured("ROLE_PM")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void updateIsSendTask(@PathVariable(value = "id")int task_id){
         taskService.updateIsSendTask(task_id);
     }

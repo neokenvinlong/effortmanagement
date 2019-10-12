@@ -13,6 +13,7 @@ import com.restful.api.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -67,6 +68,9 @@ public class TaskServiceImp implements TaskService {
         task.setEndDate(taskDTO.getEndDate());
         task.setStatus("NOT-START");
         task.setEmployee(employee);
+        task.setProject(project);
+        task.setTitle(taskDTO.getTitle());
+        task.setCreatedDate(new Date());
 
         taskRepository.save(task);
     }
@@ -84,6 +88,7 @@ public class TaskServiceImp implements TaskService {
         task.setEndDate(taskDTO.getEndDate());
         task.setProject(project);
         task.setEmployee(employee);
+        task.setTitle(taskDTO.getTitle());
 
         taskRepository.save(task);
     }

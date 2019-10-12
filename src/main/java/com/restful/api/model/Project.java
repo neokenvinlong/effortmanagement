@@ -18,7 +18,6 @@ public class Project implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "project_id")
     private Integer id;
 
     @Column(name = "name")

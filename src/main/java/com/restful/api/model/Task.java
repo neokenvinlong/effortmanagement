@@ -14,7 +14,6 @@ import java.util.List;
 public class Task implements Serializable {
 
     @Id
-    @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -45,7 +44,7 @@ public class Task implements Serializable {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Employee employee;
 
-   // private List<Sub_Task> sub_taskList;
+    // private List<Sub_Task> sub_taskList;
 
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
             CascadeType.REFRESH })

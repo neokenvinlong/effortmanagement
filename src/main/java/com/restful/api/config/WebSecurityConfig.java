@@ -62,20 +62,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-ui.html",
                 "/webjars/**").permitAll()
                 .antMatchers("/me").permitAll()
-//                .antMatchers(HttpMethod.PUT, "/tasks/**").hasRole("PM")
-//                .antMatchers(HttpMethod.DELETE, "/tasks/**").hasRole("PM")
-//                .antMatchers(HttpMethod.POST, "/tasks/**").hasRole("PM")
-//                .antMatchers(HttpMethod.GET,"/tasks/**").permitAll()
-//                .antMatchers(HttpMethod.PATCH,"/tasks/**").hasRole("PM")
-//                .antMatchers(HttpMethod.GET, "/employees/**").permitAll()
-//                .antMatchers(HttpMethod.POST, "/employees/**").hasRole("PM")
-//                .antMatchers(HttpMethod.PUT, "/employees/**").permitAll()
-//                .antMatchers(HttpMethod.DELETE,"/employees/**").hasRole("PM")
-//                .antMatchers(HttpMethod.PATCH,"/efforts/**").hasRole("PM")
-//                .antMatchers(HttpMethod.PUT,"/efforts/**").hasRole("EMPLOYEE")
-//                .antMatchers(HttpMethod.GET,"/efforts/**").permitAll()
-//                .antMatchers(HttpMethod.POST,"/efforts/**").hasRole("EMPLOYEE")
+                .antMatchers("/tasks/**").permitAll()
+                .antMatchers( "/employees/**").permitAll()
+                .antMatchers("/efforts/**").permitAll()
                 .antMatchers( "/projects/**").permitAll()
+                .antMatchers("/reports/**").permitAll()
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to

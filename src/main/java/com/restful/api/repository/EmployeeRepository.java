@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-//          ----------          Get Info Of Employee          ----------
+    //          ----------          Get Info Of Employee          ----------
 //                  --------------   Get Info To Update   --------------
     @Query(value = "Select e.employee_id, e.name, e.email, e.phone, e.account_name, e.skill" +
             " From account as a, employee as e Where e.account_name = a.name AND a.name = :keyword", nativeQuery = true)
@@ -26,7 +26,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     Optional<Employee> getInfoOfSingleEmployeeByName(@Param("keyword") String name); // Co kha nang trung name
 
 //                  --------------   Get Info To Show   --------------
-            //          ------------   SEARCH   ------------------
+    //          ------------   SEARCH   ------------------
 //    @Query(value = "Select name, employee_id, account_name, phone, email" +
 //            " From employee as e, project_employee as pe, project as e" +
 //            " Where name LIKE ' || :keyword || ' AND e.employee_id = pe.employee_id AND pe.project_id = p.project_id" +
@@ -40,7 +40,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
             " AND p.project_id = :id" +
             " AND a.role = :role", nativeQuery = true)
     List<Employee> getListNameEmployeeByProjectIdAndByRole(@Param("id") int project_id,
-                                                                   @Param("role") String role);
+                                                           @Param("role") String role);
 
     @Query(value = "Select e.name, e.employee_id" +
             " From employee as e, project_employee as pe, project as p, account as a" +
