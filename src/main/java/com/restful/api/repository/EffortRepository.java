@@ -23,7 +23,7 @@ public interface EffortRepository extends JpaRepository<Effort_Employee, Integer
             " From effort_employee as ef, employee as e, task as t" +
             " Where ef.employee_id = e.employee_id AND ef.task_id = t.task_id" +
             " AND t.employee_id = e.employee_id" +
-            " AND t.status != 'CANCEL' AND ef.is_approve = true" +
+            " AND t.status != 'CANCEL' AND ef.is_approved = true" +
             " AND ef.employee_id = :emp_id", nativeQuery = true)
     List<EffortResponse> getListEffortOfEmployeeForReport(@Param("emp_id") int emp_id);
 

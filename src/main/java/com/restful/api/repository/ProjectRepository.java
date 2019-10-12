@@ -44,7 +44,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     @Query(value = "Select p.project_id, p.status, p.name " +
             "From project as p, employee as e, project_employee as pe" +
             " Where e.employee_id = pe.employee_id AND pe.project_id = p.project_id" +
-            " AND p.status != 'CANCEL' AND p.status = true" +
+            " AND p.status != 'CANCEL' AND pe.status = true" +
             " AND e.employee_id = :emp_id", nativeQuery = true)
     List<Project> findAllProjectByEmployeeId(@Param("emp_id") int emp_id);
 
