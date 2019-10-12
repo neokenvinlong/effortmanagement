@@ -3,14 +3,19 @@ package com.restful.api.repository;
 import com.restful.api.model.Effort_Employee;
 import com.restful.api.response.EffortResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
+@Transactional
 public interface EffortRepository extends JpaRepository<Effort_Employee, Integer> {
+
+    @Modifying
     @Query(value = "Update Effort_Employee Set is_approved = true Where id = :id", nativeQuery = true)
     void updateApproveById(@Param("id") int id);
 

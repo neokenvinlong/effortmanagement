@@ -1,18 +1,18 @@
 package com.restful.api.repository;
 
-import com.restful.api.dto.EmployeeDTO;
 import com.restful.api.model.Employee;
 import com.restful.api.response.EmployeeInProjectResponse;
-import com.restful.api.response.EmployeeResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Transactional
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     //          ----------          Get Info Of Employee          ----------

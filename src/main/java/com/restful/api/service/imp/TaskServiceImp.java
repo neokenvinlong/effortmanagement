@@ -43,11 +43,11 @@ public class TaskServiceImp implements TaskService {
 
         String current_taskStatus = taskRepository.getStatusTaskById(task_id);
         String update_taskStatus = "";
-        if(current_taskStatus == "NOT-START" || current_taskStatus == "CLOSED") {
+        if(current_taskStatus.equals("NOT-START") || current_taskStatus.equals("CLOSED")) {
             update_taskStatus = "ON-GOING";
             taskRepository.updateStatusTask(update_taskStatus, task_id);
         }
-        else if(current_taskStatus == "ON-GOING"){
+        else if(current_taskStatus.equals("ON-GOING")){
             update_taskStatus = "DONE";
             taskRepository.updateStatusTask(update_taskStatus,task_id);
         }else{
@@ -78,7 +78,7 @@ public class TaskServiceImp implements TaskService {
     @Override
     public void updateTask(TaskDTO taskDTO) {
         Project project = projectRepository.findById(taskDTO.getProject_id())
-                .orElseThrow(()-> new ResourceNotFoundException("Project","id",taskDTO.getProject_id()));
+                .orElseThrow(()-> new ResourceNotFoundException("Project","project_id",taskDTO.getProject_id()));
         Employee employee = employeeRepository.findById(taskDTO.getEmp_id())
                 .orElseThrow(()-> new ResourceNotFoundException("Employee","id",taskDTO.getEmp_id()));
         Task task = taskRepository.findById(taskDTO.getId())
@@ -91,6 +91,9 @@ public class TaskServiceImp implements TaskService {
         task.setTitle(taskDTO.getTitle());
 
         taskRepository.save(task);
+
+//        taskRepository.updateTaskById(taskDTO.getCalendarEffort(), taskDTO.getDescription(),taskDTO.getEndDate(),
+//                taskDTO.getTitle(),taskDTO.getId(),taskDTO.getEmp_id());
     }
 
     @Override

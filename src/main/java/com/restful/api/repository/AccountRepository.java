@@ -3,13 +3,16 @@ package com.restful.api.repository;
 import com.restful.api.model.Account;
 import com.restful.api.response.AccountResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
+@Transactional
 public interface AccountRepository extends JpaRepository<Account, String> {
     @Query(value = "SELECT role" +
             " FROM account WHERE name = :name and password = :password", nativeQuery = true)
@@ -19,6 +22,7 @@ public interface AccountRepository extends JpaRepository<Account, String> {
             " FROM account WHERE name = :name", nativeQuery = true)
     String getTokenDeviceByAccountName(@Param("name") String username);
 
+    @Modifying
     @Query(value = "Update Account Set token_device = '' Where name = :name", nativeQuery = true)
     void deleteTokenDevice(@Param("name") String username);
 

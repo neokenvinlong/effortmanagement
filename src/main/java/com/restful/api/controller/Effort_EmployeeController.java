@@ -19,13 +19,13 @@ public class Effort_EmployeeController {
         effortService.updateApproveById(id);
     }
 
-    @PutMapping("effort/{id}")
+    @PutMapping("/effort")
     @Secured("ROLE_EMPLOYEE")
     public @ResponseBody void updateEffortById(@RequestBody EffortDTO effortDTO){
         effortService.updateEffortById(effortDTO);
     }
 
-    @PostMapping("effort/{id}")
+    @PostMapping("/effort")
     @Secured("ROLE_EMPLOYEE")
     public @ResponseBody void createEffort(@RequestBody EffortDTO effortDTO){
         effortService.createEffort(effortDTO);
