@@ -12,16 +12,13 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
     @Id
-    @NotBlank
     @Column(name = "name")
     private String name;
 
-    @NotBlank
     @JsonIgnore
     @Column(name = "password")
     private String password;
 
-    @NotBlank
     @Column(name = "role")
     private String role;
 

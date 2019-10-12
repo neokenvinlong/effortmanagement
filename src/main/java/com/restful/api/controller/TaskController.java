@@ -39,7 +39,7 @@ public class TaskController {
     }
 
     @PostMapping("/task")
-    @Secured("ROLE_PM")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void createTask(@RequestBody TaskDTO taskDTO){
         taskService.createTask(taskDTO);
     }

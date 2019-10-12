@@ -16,11 +16,9 @@ public class Effort_Employee implements Serializable {
     private Integer id;
 
     @Column(name = "effort")
-    @NotBlank
     private Double effort;
 
     @Column(name = "is_approved")
-    @NotBlank
     private Boolean is_approved;
 
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,

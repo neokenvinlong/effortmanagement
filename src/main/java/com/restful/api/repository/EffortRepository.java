@@ -14,13 +14,13 @@ public interface EffortRepository extends JpaRepository<Effort_Employee, Integer
     @Query(value = "Update Effort_Employee Set is_approved = true Where id = :id", nativeQuery = true)
     void updateApproveById(@Param("id") int id);
 
-    @Query(value = "Select ef.id, t.title, t.calendar_effort, ef.effort, e.account_name" +
-            " From effort_employee as ef, employee as e, task as t, project as p" +
+    @Query(value = "Select ef.id, t.title, t.calendar_effort, ef.effort" +
+            " From effort_employee as ef, employee as e, task as t" +
             " Where ef.employee_id = e.employee_id AND ef.task_id = t.task_id" +
-            " AND p.project_id = t.project_id AND t.employee_id = e.employee_id" +
-            " AND t.status != 'CANCEL' AND p.status != 'CANCEL'" +
-            " AND p.project_id = :project_id AND e.employee_id = :employee_id", nativeQuery = true)
-    List<EffortResponse> getListEffortOfEmployeeForReport(@Param("project_id") int id, @Param("employee_id") int emp_id);
+            " AND t.employee_id = e.employee_id" +
+            " AND t.status != 'CANCEL'" +
+            " AND ef.employee_id = :emp_id", nativeQuery = true)
+    List<EffortResponse> getListEffortOfEmployeeForReport(@Param("emp_id") int emp_id);
 
     @Query(value = "Select ef.id, t.title, t.calendar_effort, ef.effort, e.account_name" +
             " From effort_employee as ef, employee as e, task as t, project as p" +

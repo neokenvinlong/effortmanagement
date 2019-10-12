@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ReportService {
     List<ReportResponse> getEffortOfTaskForReport(int project_id);
-    List<EffortResponse> getListEffortOfEmployeeForReport(int project_id, int emp_id);
+    List<EffortResponse> getListEffortOfEmployeeForReport(int emp_id);
 }

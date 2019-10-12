@@ -24,8 +24,8 @@ public class ReportServiceImp implements ReportService {
     }
 
     @Override
-    public List<EffortResponse> getListEffortOfEmployeeForReport(int project_id, int emp_id) {
+    public List<EffortResponse> getListEffortOfEmployeeForReport( int emp_id) {
 
-        return effortRepository.getListEffortOfEmployeeForReport(project_id, emp_id);
+        return effortRepository.getListEffortOfEmployeeForReport(emp_id);
     }
 }

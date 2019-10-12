@@ -39,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // configure AuthenticationManager so that it knows from where to load
         // user for matching credentials
         auth
-        .userDetailsService(jwtUserDetailsService)
-        .passwordEncoder(passwordEncoder());
+                .userDetailsService(jwtUserDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -62,22 +62,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-ui.html",
                 "/webjars/**").permitAll()
                 .antMatchers("/me").permitAll()
-                .antMatchers(HttpMethod.PUT, "/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.DELETE, "/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.POST, "/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.GET,"/tasks/**").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/tasks/**").hasRole("PM")
-                .antMatchers(HttpMethod.GET, "/employees/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/employees/**").hasRole("PM")
-                .antMatchers(HttpMethod.PUT, "/employees/**").permitAll()
-                .antMatchers(HttpMethod.DELETE,"/employees/**").hasRole("PM")
-                .antMatchers(HttpMethod.PATCH,"/efforts/**").hasRole("PM")
-                .antMatchers(HttpMethod.PUT,"/efforts/**").hasRole("EMPLOYEE")
-                .antMatchers(HttpMethod.GET,"/efforts/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/efforts/**").hasRole("EMPLOYEE")
+//                .antMatchers(HttpMethod.PUT, "/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.DELETE, "/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.POST, "/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.GET,"/tasks/**").permitAll()
+//                .antMatchers(HttpMethod.PATCH,"/tasks/**").hasRole("PM")
+//                .antMatchers(HttpMethod.GET, "/employees/**").permitAll()
+//                .antMatchers(HttpMethod.POST, "/employees/**").hasRole("PM")
+//                .antMatchers(HttpMethod.PUT, "/employees/**").permitAll()
+//                .antMatchers(HttpMethod.DELETE,"/employees/**").hasRole("PM")
+//                .antMatchers(HttpMethod.PATCH,"/efforts/**").hasRole("PM")
+//                .antMatchers(HttpMethod.PUT,"/efforts/**").hasRole("EMPLOYEE")
+//                .antMatchers(HttpMethod.GET,"/efforts/**").permitAll()
+//                .antMatchers(HttpMethod.POST,"/efforts/**").hasRole("EMPLOYEE")
                 .antMatchers( "/projects/**").permitAll()
                 // all other requests need to be authenticated
-                        .anyRequest().authenticated().and().
+                .anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()

@@ -26,6 +26,6 @@ public class ReportController {
     @GetMapping("/report/employee")
     public @ResponseBody List<EffortResponse> getListEffortOfEmployeeForReport(@RequestBody ReportDTO reportDTO){
 
-        return reportService.getListEffortOfEmployeeForReport(reportDTO.getProject_id(),reportDTO.getEmployee_id());
+        return reportService.getListEffortOfEmployeeForReport(reportDTO.getEmployee_id());
     }
 }

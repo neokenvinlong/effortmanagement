@@ -23,7 +23,6 @@ public class Project_Employee implements Serializable {
 
     // Check xem thang employee con hoat dong trong project hay khong
     @Column(name = "status")
-    @NotBlank
     private Boolean status;
 
     public Boolean getStatus() {
