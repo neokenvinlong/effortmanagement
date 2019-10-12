@@ -72,7 +72,7 @@ public class ProjectController {
 //        projectService.updateProjectStatusById(projectId);
 //    }
 
-    @GetMapping("/project/total/employee/{id}")
+    @GetMapping("/project/totalProject/{id}")
     @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int countNumberOfProjectByEmployeeId(@PathVariable(value = "id") int employee_id){
 
@@ -106,7 +106,7 @@ public class ProjectController {
 
 
 
-    @GetMapping("/project/total_emp/{id}")
+    @GetMapping("/project/total/{id}")
     @Secured({"ROLE_PM","ROLE_EMPLOYEE"})
     public @ResponseBody int getTotalNumberMemberInProjectByProjectId(@PathVariable(value = "id") int project_id){
 
