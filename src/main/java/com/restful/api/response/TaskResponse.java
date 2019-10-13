@@ -19,4 +19,6 @@ public interface TaskResponse {
      Date getCreated_date() ;
 
      Double getCalendar_effort();
+     
+     Integer getProject_id();
 }
