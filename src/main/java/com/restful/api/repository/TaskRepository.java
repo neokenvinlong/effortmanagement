@@ -1,5 +1,6 @@
 package com.restful.api.repository;
 
+import com.restful.api.dto.TaskDTO;
 import com.restful.api.model.Task;
 import com.restful.api.response.ReportResponse;
 import com.restful.api.response.TaskResponse;
@@ -22,7 +23,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             " AND t.status != 'CANCEL'",nativeQuery = true)
     int getNumberTaskOfProject(@Param("id") int project_id);
 
-    @Query(value = "Select t.task_id, t.title, t.description, t.status, t.created_date, t.end_date," +
+    @Query(value = "Select t.task_id, t.title, t.description, t.status, t.created_date, t.end_date, t.employee_id" +
             " t.calendar_effort from task as t, project as p" +
             " Where p.project_id = t.project_id AND p.project_id = :id " +
             "AND t.status != 'CANCEL'",nativeQuery = true)
@@ -44,6 +45,10 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             " t.project_id = p.project_id AND t.status != 'CANCEL'"+
             " AND p.status != 'CANCEL' AND p.project_id = :id",nativeQuery = true)
     List<ReportResponse> getEffortOfTaskForReport(@Param("id") int project_id);
+
+    @Query(value = "Select task_id, title, description, status, end_date, calendar_effort, project_id, employee_id" +
+            " From Task Where task_id = :id", nativeQuery = true)
+    List<TaskResponse> getInfoOfTaskByTaskId(@Param("id") int id);
 
 //    @Modifying
 //    @Query(value = "Update task Set calendar_effort = :ce, description = :de," +

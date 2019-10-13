@@ -105,4 +105,10 @@ public class TaskServiceImp implements TaskService {
     public void updateIsSendTask(int task_id) {
         taskRepository.updateIsSendTask(task_id);
     }
+
+    @Override
+    public List<TaskResponse> getInfoOfTaskByTaskId(int task_id) {
+
+        return taskRepository.getInfoOfTaskByTaskId(task_id);
+    }
 }

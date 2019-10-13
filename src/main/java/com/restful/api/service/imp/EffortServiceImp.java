@@ -8,9 +8,12 @@ import com.restful.api.model.Task;
 import com.restful.api.repository.EffortRepository;
 import com.restful.api.repository.EmployeeRepository;
 import com.restful.api.repository.TaskRepository;
+import com.restful.api.response.EffortResponse;
 import com.restful.api.service.EffortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EffortServiceImp implements EffortService {
@@ -49,5 +52,11 @@ public class EffortServiceImp implements EffortService {
         effort_employee.setTask(task);
 
         effortRepository.save(effort_employee);
+    }
+
+    @Override
+    public List<EffortResponse> getListEffortWaitingApprove(int project_id) {
+
+        return effortRepository.getListEffortWaitingApprove(project_id);
     }
 }

@@ -60,4 +60,11 @@ public class TaskController {
         taskService.updateIsSendTask(task_id);
     }
 
+    @GetMapping("/task/info/{id}")
+    @PreAuthorize("hasRole('ROLE_PM')")
+    public @ResponseBody List<TaskResponse> getInfoOfTaskByTaskId(@PathVariable(value = "id") int task_id){
+
+        return taskService.getInfoOfTaskByTaskId(task_id);
+    }
+
 }
