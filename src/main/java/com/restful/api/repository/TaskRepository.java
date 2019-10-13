@@ -23,7 +23,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             " AND t.status != 'CANCEL'",nativeQuery = true)
     int getNumberTaskOfProject(@Param("id") int project_id);
 
-    @Query(value = "Select t.task_id, t.title, t.description, t.status, t.created_date, t.end_date, t.employee_id" +
+    @Query(value = "Select t.task_id, t.title, t.description, t.status, t.created_date, t.end_date, t.employee_id," +
             " t.calendar_effort from task as t, project as p" +
             " Where p.project_id = t.project_id AND p.project_id = :id " +
             "AND t.status != 'CANCEL'",nativeQuery = true)
