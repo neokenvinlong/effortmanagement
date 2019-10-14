@@ -107,7 +107,7 @@ public class TaskServiceImp implements TaskService {
     }
 
     @Override
-    public List<TaskResponse> getInfoOfTaskByTaskId(int task_id) {
+    public TaskResponse getInfoOfTaskByTaskId(int task_id) {
 
         return taskRepository.getInfoOfTaskByTaskId(task_id);
     }

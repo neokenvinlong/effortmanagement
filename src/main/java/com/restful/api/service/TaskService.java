@@ -14,6 +14,6 @@ public interface TaskService {
     void updateTask(TaskDTO taskDTO);
     void deleteTask(int task_id);
     void updateIsSendTask(int task_id);
-    List<TaskResponse> getInfoOfTaskByTaskId(int task_id);
+    TaskResponse getInfoOfTaskByTaskId(int task_id);
 
 }
