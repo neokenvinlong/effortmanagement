@@ -67,4 +67,14 @@ public class TaskController {
         return taskService.getInfoOfTaskByTaskId(task_id);
     }
 
+    @GetMapping("/task/employee/{account_name}")
+    public @ResponseBody  List<TaskResponse> getListTaskOfEmployeeByAccountName(@PathVariable(value = "account_name") String name){
+
+        return taskService.getListTaskOfEmployeeByAccountName(name);
+    }
+
+    @PostMapping("/task/create")
+    public @ResponseBody void createTaskAndEffort(@RequestBody TaskDTO taskDTO){
+        taskService.n_createTaskAndEffort(taskDTO);
+    }
 }

@@ -2,9 +2,11 @@ package com.restful.api.service.imp;
 
 import com.restful.api.dto.TaskDTO;
 import com.restful.api.exception.ResourceNotFoundException;
+import com.restful.api.model.Effort_Employee;
 import com.restful.api.model.Employee;
 import com.restful.api.model.Project;
 import com.restful.api.model.Task;
+import com.restful.api.repository.EffortRepository;
 import com.restful.api.repository.EmployeeRepository;
 import com.restful.api.repository.ProjectRepository;
 import com.restful.api.repository.TaskRepository;
@@ -25,6 +27,8 @@ public class TaskServiceImp implements TaskService {
     ProjectRepository projectRepository;
     @Autowired
     EmployeeRepository employeeRepository;
+    @Autowired
+    EffortRepository effortRepository;
 
     @Override
     public int getNumberTaskOfProject(int project_id) {
@@ -110,5 +114,36 @@ public class TaskServiceImp implements TaskService {
     public TaskResponse getInfoOfTaskByTaskId(int task_id) {
 
         return taskRepository.getInfoOfTaskByTaskId(task_id);
+    }
+
+    @Override
+    public List<TaskResponse> getListTaskOfEmployeeByAccountName(String account_name) {
+
+        return taskRepository.getListTaskOfEmployeeByAccountName(account_name);
+    }
+
+    @Override
+    public void n_createTaskAndEffort(TaskDTO taskDTO) {
+        Project project = projectRepository.findById(taskDTO.getProject_id())
+                .orElseThrow(()-> new ResourceNotFoundException("Project","id",taskDTO.getProject_id()));
+        Employee employee = employeeRepository.findById(taskDTO.getEmp_id())
+                .orElseThrow(()-> new ResourceNotFoundException("Employee","id",taskDTO.getEmp_id()));
+        Task task = new Task();
+        task.setCalendarEffort(taskDTO.getCalendarEffort());
+        task.setDescription(taskDTO.getDescription());
+        task.setEndDate(taskDTO.getEndDate());
+        task.setStatus("NOT-START");
+        task.setEmployee(employee);
+        task.setProject(project);
+        task.setTitle(taskDTO.getTitle());
+        task.setCreatedDate(new Date());
+
+        taskRepository.save(task);
+
+        Effort_Employee ee = new Effort_Employee();
+        ee.setTask(task);
+        ee.setEmployee(employee);
+        ee.setEffort(0.0);
+        effortRepository.save(ee);
     }
 }

@@ -15,5 +15,6 @@ public interface TaskService {
     void deleteTask(int task_id);
     void updateIsSendTask(int task_id);
     TaskResponse getInfoOfTaskByTaskId(int task_id);
-
+    List<TaskResponse> getListTaskOfEmployeeByAccountName(String account_name);
+    void n_createTaskAndEffort(TaskDTO taskDTO);
 }
