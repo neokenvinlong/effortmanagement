@@ -61,7 +61,6 @@ public class TaskController {
     }
 
     @GetMapping("/task/info/{id}")
-    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody TaskResponse getInfoOfTaskByTaskId(@PathVariable(value = "id") int task_id){
 
         return taskService.getInfoOfTaskByTaskId(task_id);

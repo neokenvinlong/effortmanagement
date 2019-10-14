@@ -21,4 +21,6 @@ public interface TaskResponse {
      Double getCalendar_effort();
 
      Integer getProject_id();
+
+     Double getEffort();
 }
