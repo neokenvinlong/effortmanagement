@@ -59,4 +59,10 @@ public class EffortServiceImp implements EffortService {
 
         return effortRepository.getListEffortWaitingApprove(project_id);
     }
+
+    @Override
+    public int getEffortIdByTaskIdAndEmpId(int emp_id, int task_id) {
+
+        return effortRepository.getEffortIdByTaskIdAndEmpId(emp_id,task_id);
+    }
 }

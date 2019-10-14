@@ -144,6 +144,7 @@ public class TaskServiceImp implements TaskService {
         ee.setTask(task);
         ee.setEmployee(employee);
         ee.setEffort(0.0);
+        ee.setIs_approved(false);
         effortRepository.save(ee);
     }
 }

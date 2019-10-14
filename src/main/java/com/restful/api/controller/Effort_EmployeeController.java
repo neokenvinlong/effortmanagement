@@ -37,4 +37,11 @@ public class Effort_EmployeeController {
     public @ResponseBody void getListEffortWaitingApprove(@PathVariable(value = "id") int project_id){
         effortService.getListEffortWaitingApprove(project_id);
     }
+
+    @GetMapping("/effort")
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
+    public @ResponseBody int getEffortIdByTaskIdAndEmpId(@RequestBody EffortDTO effortDTO){
+
+        return effortService.getEffortIdByTaskIdAndEmpId(effortDTO.getEmp_id(), effortDTO.getTask_id());
+    }
 }

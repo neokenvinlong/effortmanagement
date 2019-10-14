@@ -37,4 +37,7 @@ public interface EffortRepository extends JpaRepository<Effort_Employee, Integer
     List<EffortResponse> getListEffortWaitingApprove(@Param("project_id") int id);
 //    @Query(value = "Update Effort_Employee Set effort = :effort Where id = :id", nativeQuery = true)
 //    void updateEffortById(@Param("effort") double effort, @Param("id") int id);
+
+    @Query(value = "Select id from effort_employee Where employee_id = :emp_id AND task_id = :id",nativeQuery = true)
+    int getEffortIdByTaskIdAndEmpId(@Param("emp_id") int emp_id, @Param("id") int task_id);
 }

@@ -10,4 +10,5 @@ public interface EffortService {
     void updateEffortById(EffortDTO effortDTO);
     void createEffort(EffortDTO effortDTO);
     List<EffortResponse> getListEffortWaitingApprove(int project_id);
+    int getEffortIdByTaskIdAndEmpId(int emp_id, int task_id);
 }

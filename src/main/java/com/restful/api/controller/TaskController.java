@@ -74,6 +74,7 @@ public class TaskController {
     }
 
     @PostMapping("/task/create")
+    @PreAuthorize("hasRole('ROLE_PM')")
     public @ResponseBody void createTaskAndEffort(@RequestBody TaskDTO taskDTO){
         taskService.n_createTaskAndEffort(taskDTO);
     }
