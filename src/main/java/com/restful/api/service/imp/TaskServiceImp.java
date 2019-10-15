@@ -93,6 +93,7 @@ public class TaskServiceImp implements TaskService {
         task.setProject(project);
         task.setEmployee(employee);
         task.setTitle(taskDTO.getTitle());
+        task.setStatus(taskDTO.getStatus());
 
         taskRepository.save(task);
 
