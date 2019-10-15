@@ -45,4 +45,7 @@ public interface EffortRepository extends JpaRepository<Effort_Employee, Integer
     @Query(value = "Update effort_employee Set employee_id = :emp_id Where task_id = :task_id",nativeQuery = true)
     void updateEmployeeIdInEffortEmployee(@Param("emp_id") int emp_id, @Param("task_id") int task_id);
 
+    @Modifying
+    @Query(value = "Update effort_employee Set effort = :effort Where task_id = :task_id", nativeQuery = true)
+    void updateEffortByTaskId(@Param("effort") double effort, @Param("task_id") int task_id);
 }

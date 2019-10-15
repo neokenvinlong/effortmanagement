@@ -23,7 +23,7 @@ public class Effort_EmployeeController {
     @PutMapping("/effort")
     @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     public @ResponseBody void updateEffortById(@RequestBody EffortDTO effortDTO){
-        effortService.updateEffortById(effortDTO);
+        effortService.updateEffortByTaskId(effortDTO);
     }
 
     @PostMapping("/effort")

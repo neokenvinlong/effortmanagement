@@ -32,11 +32,12 @@ public class EffortServiceImp implements EffortService {
     }
 
     @Override
-    public void updateEffortById(EffortDTO effortDTO) {
-        Effort_Employee effort_employee = effortRepository.findById(effortDTO.getId())
-                .orElseThrow(()->new ResourceNotFoundException("Effort_Employee","id",effortDTO.getId()));
-        effort_employee.setEffort(effortDTO.getEffort());
-        effortRepository.save(effort_employee);
+    public void updateEffortByTaskId(EffortDTO effortDTO) {
+//        Effort_Employee effort_employee = effortRepository.findById(effortDTO.getId())
+//                .orElseThrow(()->new ResourceNotFoundException("Effort_Employee","id",effortDTO.getId()));
+//        effort_employee.setEffort(effortDTO.getEffort());
+//        effortRepository.save(effort_employee);
+        effortRepository.updateEffortByTaskId(effortDTO.getEffort(), effortDTO.getTask_id());
     }
 
     @Override

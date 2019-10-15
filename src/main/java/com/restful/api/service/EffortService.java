@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EffortService {
     void updateApproveById(int id);
-    void updateEffortById(EffortDTO effortDTO);
+    void updateEffortByTaskId(EffortDTO effortDTO);
     void createEffort(EffortDTO effortDTO);
     List<EffortResponse> getListEffortWaitingApprove(int project_id);
     int getEffortIdByTaskIdAndEmpId(int emp_id, int task_id);
