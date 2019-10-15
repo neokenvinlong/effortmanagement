@@ -3,6 +3,7 @@ package com.restful.api.repository;
 import com.restful.api.dto.TaskDTO;
 import com.restful.api.model.Task;
 import com.restful.api.response.ReportResponse;
+import com.restful.api.response.TaskEmployeeResponse;
 import com.restful.api.response.TaskResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -56,7 +57,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
             " From Task as t, Employee as e" +
             " Where t.employee_id = e.employee_id AND t.status != 'CANCEL'" +
             " AND e.account_name = :name",nativeQuery = true)
-    List<TaskResponse> getListTaskOfEmployeeByAccountName(@Param("name") String account_name);
+    List<TaskEmployeeResponse> getListTaskOfEmployeeByAccountName(@Param("name") String account_name);
 
 //    @Modifying
 //    @Query(value = "Update task Set calendar_effort = :ce, description = :de," +

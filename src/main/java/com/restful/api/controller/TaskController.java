@@ -2,6 +2,7 @@ package com.restful.api.controller;
 
 import com.restful.api.dto.TaskDTO;
 import com.restful.api.model.Task;
+import com.restful.api.response.TaskEmployeeResponse;
 import com.restful.api.response.TaskResponse;
 import com.restful.api.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class TaskController {
     }
 
     @GetMapping("/task/employee/{account_name}")
-    public @ResponseBody  List<TaskResponse> getListTaskOfEmployeeByAccountName(@PathVariable(value = "account_name") String name){
+    public @ResponseBody  List<TaskEmployeeResponse> getListTaskOfEmployeeByAccountName(@PathVariable(value = "account_name") String name){
 
         return taskService.getListTaskOfEmployeeByAccountName(name);
     }

@@ -2,6 +2,7 @@ package com.restful.api.service;
 
 import com.restful.api.dto.TaskDTO;
 import com.restful.api.model.Task;
+import com.restful.api.response.TaskEmployeeResponse;
 import com.restful.api.response.TaskResponse;
 
 import java.util.List;
@@ -15,6 +16,6 @@ public interface TaskService {
     void deleteTask(int task_id);
     void updateIsSendTask(int task_id);
     TaskResponse getInfoOfTaskByTaskId(int task_id);
-    List<TaskResponse> getListTaskOfEmployeeByAccountName(String account_name);
+    List<TaskEmployeeResponse> getListTaskOfEmployeeByAccountName(String account_name);
     void n_createTaskAndEffort(TaskDTO taskDTO);
 }

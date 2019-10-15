@@ -10,6 +10,7 @@ import com.restful.api.repository.EffortRepository;
 import com.restful.api.repository.EmployeeRepository;
 import com.restful.api.repository.ProjectRepository;
 import com.restful.api.repository.TaskRepository;
+import com.restful.api.response.TaskEmployeeResponse;
 import com.restful.api.response.TaskResponse;
 import com.restful.api.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,7 @@ public class TaskServiceImp implements TaskService {
         task.setProject(project);
         task.setEmployee(employee);
         task.setTitle(taskDTO.getTitle());
+        task.setStatus(taskDTO.getStatus());
 
         taskRepository.save(task);
 
@@ -119,7 +121,7 @@ public class TaskServiceImp implements TaskService {
     }
 
     @Override
-    public List<TaskResponse> getListTaskOfEmployeeByAccountName(String account_name) {
+    public List<TaskEmployeeResponse> getListTaskOfEmployeeByAccountName(String account_name) {
 
         return taskRepository.getListTaskOfEmployeeByAccountName(account_name);
     }
