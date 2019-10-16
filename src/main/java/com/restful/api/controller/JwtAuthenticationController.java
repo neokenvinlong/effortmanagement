@@ -58,7 +58,7 @@ public class JwtAuthenticationController {
         return accountService.getAccountByUsernameAndPassword(account_name);
     }
 
-    @RequestMapping(value = "/token_device", method = RequestMethod.POST)
+    @RequestMapping(value = "/token_device", method = RequestMethod.PUT)
     public @ResponseBody void saveOrUpdateTokenDevice(@RequestBody AccountDTO accountDTO){
         accountService.saveOrUpdateTokenDevice(accountDTO);
     }
