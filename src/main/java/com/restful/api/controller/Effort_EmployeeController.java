@@ -1,11 +1,14 @@
 package com.restful.api.controller;
 
 import com.restful.api.dto.EffortDTO;
+import com.restful.api.response.EffortResponse;
 import com.restful.api.service.EffortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/efforts")
@@ -32,10 +35,10 @@ public class Effort_EmployeeController {
         effortService.createEffort(effortDTO);
     }
 
-    @GetMapping("effort/approve/project/{id}")
+    @GetMapping("/effort/approve/project")
     @PreAuthorize("hasRole('ROLE_PM')")
-    public @ResponseBody void getListEffortWaitingApprove(@PathVariable(value = "id") int project_id){
-        effortService.getListEffortWaitingApprove(project_id);
+    public @ResponseBody List<EffortResponse> getListEffortWaitingApprove(){
+        return effortService.getListEffortWaitingApprove();
     }
 
     @GetMapping("/effort")

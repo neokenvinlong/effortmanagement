@@ -97,6 +97,7 @@ public class TaskServiceImp implements TaskService {
         task.setStatus(taskDTO.getStatus());
 
         taskRepository.save(task);
+        taskRepository.updateIsSendTask(taskDTO.getId());
 
         effortRepository.updateEmployeeIdInEffortEmployee(taskDTO.getEmp_id(), taskDTO.getId());
 

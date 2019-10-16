@@ -5,5 +5,5 @@ public interface EffortResponse {
     Double getCalendar_effort();
     Double getEffort();
     Integer getId();
-    Integer getAccount_name();
+    String getAccount_name();
 }

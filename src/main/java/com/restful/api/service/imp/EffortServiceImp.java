@@ -56,9 +56,9 @@ public class EffortServiceImp implements EffortService {
     }
 
     @Override
-    public List<EffortResponse> getListEffortWaitingApprove(int project_id) {
+    public List<EffortResponse> getListEffortWaitingApprove() {
 
-        return effortRepository.getListEffortWaitingApprove(project_id);
+        return effortRepository.getListEffortWaitingApprove();
     }
 
     @Override
