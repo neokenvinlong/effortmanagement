@@ -33,7 +33,7 @@ public interface EffortRepository extends JpaRepository<Effort_Employee, Integer
             " AND p.project_id = t.project_id AND ef.employee_id = e.employee_id" +
             " AND t.status != 'CANCEL' AND p.status != 'CANCEL'" +
             " AND pe.employee_id = e.employee_id AND pe.project_id = p.project_id" +
-            " AND ef.is_approved = false AND t.is_send = true", nativeQuery = true)
+            " AND ef.is_approved = false AND t.is_send = true AND ef.effort > 0", nativeQuery = true)
     List<EffortResponse> getListEffortWaitingApprove();
 //    @Query(value = "Update Effort_Employee Set effort = :effort Where id = :id", nativeQuery = true)
 //    void updateEffortById(@Param("effort") double effort, @Param("id") int id);
